@@ -1,0 +1,43 @@
+<project name="collinear" default="build">
+  <!--property file="build.properties"/-->  
+  <property name="src.dir" value="src/main/java" /> 
+  <property name="build.dir" value="target/classes" /> 
+  <property name="name" value="collinear"/>
+  
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>   
+  </path>  
+
+  <path id="run.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  	<pathelement location="${build.dir}"/>
+  </path>
+  
+  <target name="build" description="build">
+      <javac includeantruntime="false" srcdir="${src.dir}" 
+          destdir="${build.dir}"
+          classpathref="build.classpath">  
+      </javac>
+  </target>  
+	
+	<!--target name="run" description="run">
+		<java classpathref="run.classpath" classname="Subset" inputstring="A B C D E F G H I" >
+			<arg value="3"/>
+		</java>
+	</target>
+
+	 <target name="test1" description="test1">
+	  <java classpathref="run.classpath" classname="Subset" inputstring="A B C D E F G H I" >
+      <arg value="10"/>
+    </java>
+	 </target>
+
+  <target name="test2" description="test2">
+     <java fork="true" classpathref="run.classpath" classname="InteractivePercolationVisualizer" >
+     </java>
+  </target-->	
+</project>
