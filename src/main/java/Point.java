@@ -15,11 +15,21 @@ import java.util.Comparator;
 public class Point implements Comparable<Point> {
 
     // compare points by slope
-    public final Comparator<Point> SLOPE_ORDER;       // YOUR DEFINITION HERE
+    public final Comparator<Point> SLOPE_ORDER = new BySlopeOrder(); // YOUR DEFINITION HERE
 
     private final int x;                              // x coordinate
     private final int y;                              // y coordinate
 
+    public class BySlopeOrder implements Comparator<Point> {
+      public int compare(Point q, Point r) {
+        double sq = Point.this.slopeTo(q);
+        double rq = Point.this.slopeTo(r);
+        if (sq < rq) return -1;
+        else if (sq == rq) return 0;
+        return 1;
+      }
+    }
+    
     // create the point (x, y)
     public Point(int x, int y) {
         /* DO NOT MODIFY */
@@ -41,13 +51,20 @@ public class Point implements Comparable<Point> {
 
     // slope between this point and that point
     public double slopeTo(Point that) {
-        /* YOUR CODE HERE */
+      if (this.x == that.x) {
+        if (this.y == that.y) return Double.NEGATIVE_INFINITY;
+        else return Double.POSITIVE_INFINITY;
+      }
+      return (double)(that.y - this.y) / (double)(that.x - this.x);
     }
 
     // is this point lexicographically smaller than that one?
     // comparing y-coordinates and breaking ties by x-coordinates
     public int compareTo(Point that) {
-        /* YOUR CODE HERE */
+        if (this.y < that.y) return -1;
+        else if ((this.y == that.y) && (this.x == that.x)) return 0;
+        else if ((this.y == that.y) && (this.x < that.x)) return -1;
+        else return 1;
     }
 
     // return string representation of this point
