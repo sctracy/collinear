@@ -51,29 +51,40 @@ public class Fast {
       sl = 0;
       for (int j = i + 1; j < N; j++) {
         if ((n >= 0) && (p.slopeTo(points[j]) == sl)) {
-          if (points[j].compareTo(pmin) < 0) pmin = points[j];
-          if (points[j].compareTo(pmax) > 0) pmax = points[j];
           n++;
         }
         
         if (((n >= 0) && (p.slopeTo(points[j]) != sl)) || (n < 0) || (j == N - 1)) {
         
           if (n >= 2) {
-            StdOut.print(p);
+            Arrays.sort(points, i + 1, j);
+            pmin = p;
+            pmax = p;
+            //StdOut.print(p);
             for (int k = 0; k <= n; k++) {
+              if (k == 0) {
+                if (points[start + k].compareTo(pmin) < 0) pmin = points[start + k];
+              }  
+              //else if (points[start + k].compareTo(pmin) > 0) StdOut.print(p);
+              else if (k == n) {
+                if (points[start + k].compareTo(pmax) > 0) pmax = points[start + k];
+              }  
+              //if (points[start + k].compareTo(pmin) > 0)
+              
               StdOut.print(" -> ");
               StdOut.print(points[start + k]);
               points[start + k].draw();
             }
             StdOut.println();
             pmin.drawTo(pmax);
-            n = 0;
+            //n = 0;
+            if (j < N - 1) {
+              Arrays.sort(points, j + 1, N, p.SLOPE_ORDER);
+            }
           }          
           n = 0;
           start = j;
           sl = p.slopeTo(points[j]);
-          pmin = p;
-          pmax = p;
         }
       }                 
     }   
