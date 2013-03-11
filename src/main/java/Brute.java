@@ -6,6 +6,10 @@ public class Brute {
    * @param args
    */
   public static void main(String[] args) {
+
+    StdDraw.setXscale(0, 32768);
+    StdDraw.setYscale(0, 32768);
+    
     // read in the input
     String filename = args[0];
     In in = new In(filename);
@@ -16,6 +20,7 @@ public class Brute {
       int y = in.readInt();
       Point p = new Point(x, y);
       points[i] = p;
+      p.draw();
     }
 
     Arrays.sort(points);
@@ -25,8 +30,7 @@ public class Brute {
       StdOut.println(points[i]);
     }
 //*/  
-    StdDraw.setXscale(0, 32768);
-    StdDraw.setYscale(0, 32768);
+
     Point p,q,r,s;
     for (int i = 0; i < points.length; i++) {
       p = points[i];
@@ -42,10 +46,10 @@ public class Brute {
             s = points[l];
             if (p.slopeTo(r) == p.slopeTo(s)) {
               StdOut.printf("%s -> %s -> %s -> %s\n", p, q, r, s);
-              p.draw();
-              q.draw();
-              r.draw();
-              s.draw();
+              //p.draw();
+              //q.draw();
+              //r.draw();
+              //s.draw();
               p.drawTo(s);
             }
           }

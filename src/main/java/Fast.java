@@ -7,6 +7,10 @@ public class Fast {
    * @param args
    */
   public static void main(String[] args) {
+
+    StdDraw.setXscale(0, 32768);
+    StdDraw.setYscale(0, 32768);
+    
     // read in the input
     String filename = args[0];
     In in = new In(filename);
@@ -17,6 +21,7 @@ public class Fast {
       int y = in.readInt();
       Point p = new Point(x, y);
       points[i] = p;
+      p.draw();
     }
 
 /*
@@ -27,9 +32,6 @@ public class Fast {
 //*/
 
     Arrays.sort(points);
-
-    StdDraw.setXscale(0, 32768);
-    StdDraw.setYscale(0, 32768);
 
     Point p;
     double sl;
@@ -70,6 +72,7 @@ public class Fast {
               pmax = p;
 
               StdOut.print(p);
+              //p.draw();
               for (k = 0; k <= n; k++) {
                 if (k == 0) {
                   if (points[start + k].compareTo(pmin) < 0) {
@@ -83,7 +86,7 @@ public class Fast {
 
                 StdOut.print(" -> ");
                 StdOut.print(points[start + k]);
-                points[start + k].draw();
+                //points[start + k].draw();
               }
               StdOut.println();
               pmin.drawTo(pmax);

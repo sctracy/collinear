@@ -20,7 +20,7 @@ public class Point implements Comparable<Point> {
     private final int x;                              // x coordinate
     private final int y;                              // y coordinate
 
-    public class BySlopeOrder implements Comparator<Point> {
+    private class BySlopeOrder implements Comparator<Point> {
       public int compare(Point q, Point r) {
         double sq = Point.this.slopeTo(q);
         double rq = Point.this.slopeTo(r);
@@ -54,6 +54,9 @@ public class Point implements Comparable<Point> {
       if (this.x == that.x) {
         if (this.y == that.y) return Double.NEGATIVE_INFINITY;
         else return Double.POSITIVE_INFINITY;
+      }
+      else if (this.y == that.y) {
+        return (double)(that.y - this.y) / (double) Math.abs(that.x - this.x);
       }
       return (double)(that.y - this.y) / (double)(that.x - this.x);
     }
