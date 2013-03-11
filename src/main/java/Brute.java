@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Brute {
-  
+
   /**
    * @param args
    */
@@ -17,10 +17,10 @@ public class Brute {
       Point p = new Point(x, y);
       points[i] = p;
     }
-        
+
     Arrays.sort(points);
 
-/*    
+/*
     for (int i = 0; i < points.length; i++) {
       StdOut.println(points[i]);
     }
@@ -48,9 +48,9 @@ public class Brute {
               s.draw();
               p.drawTo(s);
             }
-          }          
-        }        
-      }      
+          }
+        }
+      }
     }
   }
 

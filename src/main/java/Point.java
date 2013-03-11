@@ -15,7 +15,7 @@ import java.util.Comparator;
 public class Point implements Comparable<Point> {
 
     // compare points by slope
-    public final Comparator<Point> SLOPE_ORDER = new BySlopeOrder(); // YOUR DEFINITION HERE
+    public final Comparator<Point> SLOPE_ORDER = new BySlopeOrder();
 
     private final int x;                              // x coordinate
     private final int y;                              // y coordinate
@@ -57,7 +57,7 @@ public class Point implements Comparable<Point> {
       }
       return (double)(that.y - this.y) / (double)(that.x - this.x);
     }
-
+    
     // is this point lexicographically smaller than that one?
     // comparing y-coordinates and breaking ties by x-coordinates
     public int compareTo(Point that) {

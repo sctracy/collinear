@@ -40,7 +40,7 @@
 
 	<target name="Fast" description="Fast">
 		<java fork="true" classpathref="run.classpath" classname="Fast">
-			<arg value="data/input8.txt" />
+			<arg value="data/input20.txt" />
 		</java>
 	</target>
 
